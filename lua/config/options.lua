@@ -23,5 +23,5 @@ vim.o.clipboard = "unnamedplus"
 vim.o.swapfile = false
 vim.o.winborder = "rounded"
 vim.g.netrw_banner = 0
-vim.g.mapleader = ' '
-vim.g.maplocalleader = '\\'
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
