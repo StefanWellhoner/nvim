@@ -10,3 +10,4 @@ vim.keymap.set("n", "<leader>pv", ":Ex<CR>", { desc = "Open directory explorer" 
 vim.keymap.set("n", "<leader>v", ":Vex %<CR>", { desc = "Vertical split of window" })
 vim.keymap.set("n", "<leader>h", ":Hex %<CR>", { desc = "Horizontal split of window" })
 
+vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>", {})
