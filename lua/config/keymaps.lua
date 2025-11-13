@@ -10,4 +10,13 @@ vim.keymap.set("n", "<leader>pv", ":Ex<CR>", { desc = "Open directory explorer" 
 vim.keymap.set("n", "<leader>v", ":Vex %<CR>", { desc = "Vertical split of window" })
 vim.keymap.set("n", "<leader>h", ":Hex %<CR>", { desc = "Horizontal split of window" })
 
+-- TODO KEYMAPS --
+local todo = require("todo-comments")
 vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>", {})
+vim.keymap.set("n", "]t", function()
+	todo.jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+	todo.jump_prev()
+end, { desc = "Previous todo comment" })

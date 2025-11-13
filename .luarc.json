@@ -10,7 +10,9 @@
       "${3rd}/luv/library",
       "${3rd}/busted/library",
       "/usr/share/nvim/runtime/lua",
-      "/usr/share/nvim/runtime/lua/vim/lsp"
+      "/usr/share/nvim/runtime/lua/vim/lsp",
+      "/opt/homebrew/opt/nvim/share/nvim/runtime/lua",
+      "/opt/homebrew/opt/nvim/share/nvim/runtime/lua/vim/ls"
     ],
     "checkThirdParty": false
   },
