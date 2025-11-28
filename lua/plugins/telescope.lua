@@ -10,6 +10,7 @@ return {
 			vim.keymap.set("n", "<leader>pr", builtin.resume, {})
 			vim.keymap.set("n", "<leader>gc", builtin.git_commits, {})
 			vim.keymap.set("n", "<leader>gb", builtin.git_branches, {})
+			vim.keymap.set("n", "<leader>gi", builtin.lsp_implementations, {})
 			vim.keymap.set("n", "<leader>gr", builtin.lsp_references, { desc = "Show references (Telescope)" })
 		end,
 	},

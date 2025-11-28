@@ -25,3 +25,4 @@ vim.o.winborder = "rounded"
 vim.g.netrw_banner = 0
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+vim.o.splitright = true

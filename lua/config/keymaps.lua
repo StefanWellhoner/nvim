@@ -20,3 +20,6 @@ end, { desc = "Next todo comment" })
 vim.keymap.set("n", "[t", function()
 	todo.jump_prev()
 end, { desc = "Previous todo comment" })
+
+-- INDENT BLANKLINE KEYMAPS --
+vim.keymap.set("n", "<leader>\\", ":IBLToggle<CR>", {})

@@ -18,34 +18,34 @@ local colors = {
 
 local customrosepine = {
   normal = {
-    a = {bg = colors.love, fg = colors.base },
-    b = {bg = colors.highlight_low, fg = colors.text},
-    c = {bg = colors.base, fg = colors.text}
+    a = { bg = colors.love, fg = colors.base },
+    b = { bg = colors.highlight_low, fg = colors.text },
+    c = { bg = colors.base, fg = colors.text }
   },
   insert = {
-    a = {bg = colors.pine, fg = colors.base },
-    b = {bg = colors.highlight_low, fg = colors.text},
-    c = {bg = colors.base, fg = colors.text}
+    a = { bg = colors.pine, fg = colors.base },
+    b = { bg = colors.highlight_low, fg = colors.text },
+    c = { bg = colors.base, fg = colors.text }
   },
   visual = {
-    a = {bg = colors.iris, fg = colors.base },
-    b = {bg = colors.highlight_low, fg = colors.text},
-    c = {bg = colors.base, fg = colors.text}
+    a = { bg = colors.iris, fg = colors.base },
+    b = { bg = colors.highlight_low, fg = colors.text },
+    c = { bg = colors.base, fg = colors.text }
   },
   replace = {
-    a = {bg = colors.foam, fg = colors.base },
-    b = {bg = colors.highlight_low, fg = colors.text},
-    c = {bg = colors.base, fg = colors.text}
+    a = { bg = colors.foam, fg = colors.base },
+    b = { bg = colors.highlight_low, fg = colors.text },
+    c = { bg = colors.base, fg = colors.text }
   },
   command = {
-    a = {bg = colors.gold, fg = colors.base },
-    b = {bg = colors.highlight_low, fg = colors.text},
-    c = {bg = colors.base, fg = colors.text}
+    a = { bg = colors.gold, fg = colors.base },
+    b = { bg = colors.highlight_low, fg = colors.text },
+    c = { bg = colors.base, fg = colors.text }
   },
   inactive = {
-    a = {bg = colors.muted, fg = colors.base },
-    b = {bg = colors.highlight_low, fg = colors.text},
-    c = {bg = colors.base, fg = colors.text}
+    a = { bg = colors.muted, fg = colors.base },
+    b = { bg = colors.highlight_low, fg = colors.text },
+    c = { bg = colors.base, fg = colors.text }
   }
 }
 
@@ -58,7 +58,12 @@ return {
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
         theme = customrosepine
-      }
+      },
+      sections = {
+        lualine_c = {
+          { 'filename', path = 1 },
+        },
+      },
     })
   end
 }
