@@ -26,3 +26,5 @@ vim.g.netrw_banner = 0
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.o.splitright = true
+vim.o.showcmd = false
+vim.o.number = true

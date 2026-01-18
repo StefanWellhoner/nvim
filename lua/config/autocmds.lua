@@ -5,3 +5,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	callback = function(args)
+		vim.api.nvim_buf_set_keymap(args.buf, "n", "q", ":close<CR>", { noremap = true, silent = true })
+	end,
+})

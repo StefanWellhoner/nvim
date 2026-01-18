@@ -63,6 +63,12 @@ return {
 				},
 			})
 
+      vim.lsp.config("helm-ls", {
+        settings = {
+          pat
+        }
+      })
+
 			vim.lsp.enable({ "lua_ls", "gopls", "rubocop", "yamlls", "ts_ls" })
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
