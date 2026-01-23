@@ -11,3 +11,10 @@ vim.api.nvim_create_autocmd("TermOpen", {
 		vim.api.nvim_buf_set_keymap(args.buf, "n", "q", ":close<CR>", { noremap = true, silent = true })
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "*/templates/*.yaml", "*/templates/*.tpl", "*/templates/*.yml" },
+	callback = function()
+		vim.bo.filetype = "helm"
+	end,
+})
