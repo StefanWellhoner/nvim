@@ -9,6 +9,10 @@ vim.keymap.set("n", "<leader>p", '"+p', { desc = "Pastes from clipboard" })
 vim.keymap.set("n", "<leader>pv", "<cmd>Ex<CR>", { desc = "Open directory explorer" })
 vim.keymap.set("n", "<leader>v", "<cmd>Vex %<CR>", { desc = "Vertical split of window" })
 vim.keymap.set("n", "<leader>h", "<cmd>Hex %<CR>", { desc = "Horizontal split of window" })
+vim.keymap.set("n", "<leader>wp", function ()
+ vim.wo.wrap = not vim.wo.wrap
+ vim.wo.linebreak = not vim.wo.linebreak
+end, { desc = "Horizontal split of window" })
 
 -- TODO KEYMAPS --
 local todo = require("todo-comments")
@@ -26,3 +30,6 @@ vim.keymap.set("n", "<leader>\\", "<cmd>IBLToggle<CR>", {})
 
 -- UNDO TREE --
 vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>", {})
+
+-- MARKDOWN PREVIEW --
+vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<CR>", { desc = "Toggle Markdown Preview" })

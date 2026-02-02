@@ -9,7 +9,7 @@ return {
 		"mason-org/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "gopls", "stylua", "rubocop", "yamlls", "eslint", "helm_ls" },
+				ensure_installed = { "lua_ls", "gopls", "stylua", "rubocop", "yamlls", "eslint", "helm_ls", "jsonls" },
 			})
 		end,
 	},
@@ -74,7 +74,7 @@ return {
 				},
 			})
 
-			vim.lsp.enable({ "lua_ls", "gopls", "rubocop", "yamlls", "ts_ls", "helm_ls" })
+			vim.lsp.enable({ "lua_ls", "gopls", "rubocop", "yamlls", "ts_ls", "helm_ls", "jsonls" })
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
