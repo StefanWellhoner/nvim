@@ -1,94 +1,121 @@
 return {
-	{
-		"mason-org/mason.nvim",
-		config = function()
-			require("mason").setup()
-		end,
-	},
-	{
-		"mason-org/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "gopls", "stylua", "rubocop", "yamlls", "eslint", "helm_ls", "jsonls" },
-			})
-		end,
-	},
-	{
-		"neovim/nvim-lspconfig",
-		config = function()
-			vim.lsp.config("lua_ls", {
-				settings = {
-					Lua = {
-						hint = {
-							enable = true,
-						},
-					},
-				},
-			})
+  {
+    "mason-org/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end,
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls", "gopls", "stylua", "rubocop", "yamlls", "eslint", "helm_ls", "html", "cssls", "ts_ls", "bashls", "dockerls", "docker_compose_language_service", "sqls", "jsonls" },
+      })
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      vim.lsp.config("lua_ls", {
+        settings = {
+          Lua = {
+            hint = {
+              enable = true,
+            },
+          },
+        },
+      })
 
-			vim.lsp.config("gopls", {
-				settings = {
-					gopls = {
-						hints = {
-							parameterNames = true,
-						},
-					},
-				},
-			})
+      vim.lsp.config("gopls", {
+        settings = {
+          gopls = {
+            hints = {
+              parameterNames = true,
+              constantValues = true,
+              ignoredError = true
+            },
+          },
+        },
+      })
 
-			vim.lsp.config("ts_ls", {
-				settings = {
-					javascript = {
-						inlayHints = {
-							includeInlayEnumMemberValueHints = true,
-							includeInlayFunctionLikeReturnTypeHints = true,
-							includeInlayFunctionParameterTypeHints = true,
-							includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-							includeInlayPropertyDeclarationTypeHints = true,
-							includeInlayVariableTypeHints = false,
-						},
-					},
-					typescript = {
-						inlayHints = {
-							includeInlayEnumMemberValueHints = true,
-							includeInlayFunctionLikeReturnTypeHints = true,
-							includeInlayFunctionParameterTypeHints = true,
-							includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-							includeInlayPropertyDeclarationTypeHints = true,
-							includeInlayVariableTypeHints = false,
-						},
-					},
-				},
-			})
+      vim.lsp.config("ts_ls", {
+        settings = {
+          javascript = {
+            inlayHints = {
+              includeInlayEnumMemberValueHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayVariableTypeHints = false,
+            },
+          },
+          typescript = {
+            inlayHints = {
+              includeInlayEnumMemberValueHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayVariableTypeHints = false,
+            },
+          },
+        },
+      })
 
-			vim.lsp.config("helm_ls", {
-				settings = {
-					["helm-ls"] = {
-						yamlls = {
-							enabled = true,
-							path = "yaml-language-server",
-						},
-					},
-				},
-			})
+      vim.lsp.config("helm_ls", {
+        settings = {
+          ["helm-ls"] = {
+            yamlls = {
+              enabled = true,
+              path = "yaml-language-server",
+            },
+          },
+        },
+      })
 
-			vim.lsp.enable({ "lua_ls", "gopls", "rubocop", "yamlls", "ts_ls", "helm_ls", "jsonls" })
+      vim.lsp.config("sqls", {
+        settings = {
+          sqls = {
+            connections = {
+              -- Add your PostgreSQL connections here per project
+              -- Example:
+              -- {
+              --   driver = "postgresql",
+              --   dataSourceName = "host=127.0.0.1 port=5432 user=postgres password=postgres dbname=mydb sslmode=disable",
+              -- },
+            },
+          },
+        },
+      })
 
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, {})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
-			vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, { desc = "Signature help" })
-			vim.keymap.set("n", "<leader>ff", function()
-				vim.lsp.buf.format({ async = true })
-			end, {})
+      vim.lsp.config("jsonls", {
+        settings = {
+          json = {
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      })
 
-			vim.keymap.set("n", "<leader>ih", function()
-				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
-			end, { desc = "Toggle Inlay Hints" })
-		end,
-	},
+      vim.lsp.enable({ "lua_ls", "gopls", "rubocop", "yamlls", "ts_ls", "helm_ls", "html", "cssls", "bashls", "dockerls",
+        "docker_compose_language_service", "sqls", "jsonls" })
+
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+      vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, {})
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+      vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, { desc = "Signature help" })
+      vim.keymap.set("n", "<leader>ff", function()
+        vim.lsp.buf.format({ async = true })
+      end, {})
+
+      vim.keymap.set("n", "<leader>ih", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+      end, { desc = "Toggle Inlay Hints" })
+    end,
+  },
 }
